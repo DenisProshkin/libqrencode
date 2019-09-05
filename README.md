@@ -1,13 +1,13 @@
 # libqrencode - a fast and compact QR Code encoding library [![Build Status](https://travis-ci.org/fukuchi/libqrencode.png?branch=master)](https://travis-ci.org/fukuchi/libqrencode)
 
-**Attention:** This repository contains the development version of libqrencode. See <https://fukuchi.org/works/qrencode/> for the official stable releases. At this moment, the latest stable release is version 4.0.0.
+**Attention:** This repository contains the development version of libqrencode. See <https://fukuchi.org/works/qrencode/> for the official stable releases. At this moment, the latest stable release is version 4.0.2.
 
 GENERAL INFORMATION
 ===================
-Libqrencode is a fast and compact library for encoding data in a QR Code symbol,
-a 2D symbology that can be scanned by handy terminals such as a mobile phone
-with CCD. The capacity of QR Code is up to 7000 digits or 4000 characters and
-has high robustness.
+Libqrencode is a fast and compact library for encoding data in a QR Code,
+a 2D symbology that can be scanned by handy terminals such as a smartphone.
+The capacity of QR Code is up to 7000 digits or 4000 characters and has high
+robustness.
 
 Libqrencode accepts a string or a list of data chunks then encodes in a QR Code
 symbol as a bitmap array. While other QR Code applications generate an image
@@ -45,7 +45,22 @@ tests and/or tools if you want not to install programs using SDL or PNG.
 
 Compile & install
 -----------------
-Just try
+If there is no "configure" script in the source code directory, run
+"autogen.sh" at first to generate it - this is mandatory if you downloaded the
+source from GitHub. Some additional software is needed to complete this
+process. For example, in Ubuntu, the following packages are needed:
+
+- autoconf
+- automake
+- autotools-dev
+- libtool
+- pkg-config
+- libpng12-dev
+
+You can skip this process if you have "configure" script already (typically
+when you downloaded the source tarball from fukuchi.org.)
+
+Now you are ready to compile the library and tool. Type the following commands:
 
 ```
 ./configure
@@ -55,15 +70,12 @@ sudo ldconfig
 ```
 
 This compiles and installs the library and header file to the appropriate
-directories. By default, /usr/local/lib and /usr/local/include. You can change
+directories: by default, /usr/local/lib and /usr/local/include. You can change
 the destination directory by passing some options to the configure script.
 Run "./configure --help" to see the list of options.
 
 It also installs a command line tool "qrencode" to /usr/local/bin. If you want
 not to build it, give "--without-tools" option to the configure script.
-
-When you downloaded the source code from github, run "autogen.sh" at first to
-generate configure script.
 
 If the configure script does not work well, try to use CMake.
 
@@ -79,7 +91,9 @@ configure, or "-DWITH\_TESTS=YES" to cmake.
 USAGE
 =====
 Basic usages of this library are written in the header file (qrencode.h).
-You can generate a manual of the library by using Doxygen.
+You can generate a manual of the library by using Doxygen, or see
+
+https://fukuchi.org/works/qrencode/manual/index.html
 
 
 WARNINGS
@@ -96,7 +110,7 @@ application.
 
 LICENSING INFORMATION
 =====================
-Copyright (C) 2006-2017 Kentaro Fukuchi
+Copyright (C) 2006-2018 Kentaro Fukuchi
 
 This library is free software; you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
@@ -164,7 +178,9 @@ Copyright (C) 2002, 2003, 2004, 2006 Phil Karn, KA9Q
 * Robert Petersen (@ripetersen)
                         - added ability to read input data from a file
 * @Oblomov              - improved SVG support patch
-* @mgorny               - reverse mappings of UTF8 and ANSIUTF8
+* Michał Górny (@mgorny)
+                        - reverse mappings of UTF8 and ANSIUTF8, build script
+                          fixes
 * @EckoEdc              - MinGW support patch
 * Sebastian Buchwald (@UniQP)
                         - Various code cleanups
@@ -176,11 +192,17 @@ Copyright (C) 2002, 2003, 2004, 2006 Phil Karn, KA9Q
                         - improved CMake support
 * @vanillahsu           - bug fix patch
 * @Ation                - bug fix patch
+* Jonathan Bennett      - Addedd "--inline" option to qrencode
+* András Veres-Szentkirályi
+                        - ANSI256UTF8 support
+* @sdf5                 - improved CMake support
+* Lonnie Abelbeck (@abelbeck)
+                        - bug fix patch
 * Shigeyuki Hirai, Paul Janssens, wangsai, Gavan Fantom, Matthew Baker,
   Rob Ryan, Fred Steinhaeuser, Terry Burton, @chisj, @vlad417, Petr,
   Hassan Hajji, Emmanuel Blot, ßlúèÇhîp, Heiko Becker, Gavin Andresen,
   David Binderman, @ralgozino, Sean McMurray, Vlad Bespalov (@win32asm),
   Antenore Gatta, Yoshimichi Inoue, Sunil Maganally, Norman Gray,
   Danomi Manchego, @minus7, Ian Sweet, @qianchenglenger, Ronald Michaels,
-  Yuji Ueno, Jakub Wilk, @KangLin, @c-273
+  Yuji Ueno, Jakub Wilk, @KangLin, @c-273, @thebunnyrules
                         - bug report / suggestion / typo fixes

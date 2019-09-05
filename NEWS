@@ -1,8 +1,36 @@
 libqrencode NEWS - Overview of changes
 ======================================
 
-Version 4.0.0 (2017.9.21)
+Version 4.1.0 (2018.6.x)
 ------------------------
+* Command line tool "qrencode" has been improved:
+    * New option "--inline" has been added. (Thanks to @jp-bennett)
+    * UTF8 mode now supports ANSI256 color. (Thanks to András Veres-
+	  Szentkirályi)
+* Some compile time warnings have been fixed.
+* Various CMake support improvements. (Thanks to @mgorny and @sdf5)
+* Some minor bug fixes. (Thank to Lonnie Abelbeck)
+
+Release Note:
+The internal representation of the output code has been changed slightly -
+the second bit from LSB side now represents; 1:ECC bit / 0:data bit.
+This is only for debug purpose and does not affect user applications.
+
+
+Version 4.0.2 (2018.6.6)
+------------------------
+* Build script fixes. (Thanks to @mgorny)
+
+
+Version 4.0.1 (2018.6.4)
+------------------------
+* CMake support improved.
+* New test scripts have been added.
+* Some compile time warnings have been fixed.
+
+
+Version 4.0.0 (2017.9.21)
+-------------------------
 * Memory efficiency has been improved.
 * QRcode_clearCache() has been deprecated.
 * Error correction code generating functions have been improved.

@@ -23,7 +23,7 @@ if HAVE_LIBPTHREAD
 noinst_PROGRAMS += pthread_qrencode
 endif
 
-EXTRA_DIST = test_all.sh test_configure.sh frame URI_testset.inc CMakeLists.txt
+EXTRA_DIST = test_all.sh test_basic.sh test_configure.sh frame URI_testset.inc CMakeLists.txt
 
 libdecoder_a_SOURCES = decoder.c decoder.h datachunk.c datachunk.h rsecc_decoder.c rsecc_decoder.h
 
@@ -37,6 +37,7 @@ test_estimatebit_SOURCES = test_estimatebit.c common.c
 test_estimatebit_LDADD = ../libqrencode.la
 
 test_qrspec_SOURCES = test_qrspec.c common.c
+test_qrspec_CPPFLAGS = -DSRCDIR=\"$(srcdir)/\"
 test_qrspec_LDADD = $(DECODER_LIBS) ../libqrencode.la
 
 test_mqrspec_SOURCES = test_mqrspec.c common.c
